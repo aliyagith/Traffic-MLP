@@ -162,6 +162,11 @@ def predict():
 def about():
     return render_template('About.html')
 
+# Features route
+@app.route("/features")
+def features():
+    return render_template('features.html')
+
 @app.route("/login")
 def login():
     # GET renders template; POST handled in /auth/login

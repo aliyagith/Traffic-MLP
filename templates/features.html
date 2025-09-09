@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Core Features</title>
+    <style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(180deg, #0f1320 0%, #0b0f1a 100%);
+        color: #eef3ff;
+        min-height: 100vh;
+    }
+
+    header {
+        background: rgba(16, 20, 30, 0.95);
+        padding: 16px 40px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.2em;
+        color: #5ee7df;
+        letter-spacing: 1px;
+    }
+
+    .intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 30px auto;
+        font-size: 1.15em;
+        color: #cfdaf7;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .feature-card {
+        background: linear-gradient(145deg, #14213d, #0d1b2a);
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+    }
+
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #06beb6, #48b1bf);
+        margin-bottom: 18px;
+        font-size: 2em;
+    }
+
+    .feature-card h2 {
+        margin: 0 0 12px;
+        font-size: 1.4em;
+        color: #5ee7df;
+    }
+
+    .feature-card p {
+        margin: 0;
+        color: #e0eafc;
+        font-size: 1em;
+        line-height: 1.5em;
+    }
+
+    /* Section Titles */
+    .section-title{
+        text-align:center;
+        color:var(--accent);
+        font-size:1.9rem;
+        margin-top:46px;
+        margin-bottom:12px;
+        font-weight:700;
+    }
+
+    /* Tools / Technologies list (clean, no boxes) */
+    .tools-list{
+        max-width:980px;
+        margin:12px auto 36px;
+        padding:0 18px;
+        color:#e0eafc;
+        font-size:1.04rem;
+        line-height:1.7;
+    }
+    .tools-list p{ margin:10px 0; }
+    .tools-list strong{ color:var(--accent); font-weight:600; }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        color: #a9b3ce;
+        margin-top: 40px;
+        font-size: 0.95em;
+    }
+
+    @media (max-width: 768px) {
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <h1>Core Features</h1>
+    </header>
+
+    <!-- ===== INTRO ===== -->
+    <div class="intro">
+        Machine learning-driven traffic analysis and prediction — enabling smarter, safer, and sustainable urban mobility.
+    </div>
+
+    <!-- ===== FEATURES (2x2) ===== -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">⚠️</div>
+                <h2>Incident Prediction</h2>
+                <p>Machine learning models detect likely accidents, road closures, or anomalies early — helping operators dispatch responses faster and reduce knock-on congestion effects.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+                <h2>Predictive Analytics</h2>
+                <p>Machine learning models forecast traffic congestion and demand in advance, enabling proactive rerouting, dynamic lane allocation, and better resource planning.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🚗</div>
+                <h2>Traffic Density Analysis</h2>
+                <p>Real-time monitoring of vehicle density by zone and hour — used to identify hotspots, tune signals, and plan infrastructure or policy interventions.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔋</div>
+                <h2>Sustainable Solutions</h2>
+                <p>Optimized routing and reduced idle times help cut carbon emissions (up to ~45% in simulations), encouraging greener transport and lower energy consumption.</p>
+        </div>
+    </div>
+
+    <!-- ===== TOOLS SECTION ===== -->
+    <div class="section-title">Tools We Use</div>
+    <div class="tools-list">
+        <p>🐍 <strong>Python:</strong> Core programming language for development.</p>
+        <p>⚡ <strong>Flask:</strong> Backend framework for web application.</p>
+        <p>🎨 <strong>HTML, CSS & Bootstrap:</strong> Frontend design and responsive UI.</p>
+        <p>🛠️ <strong>SQLAlchemy & SQLite:</strong> Database management.</p>
+    </div>
+
+    <!-- ===== TECHNOLOGIES SECTION ===== -->
+    <div class="section-title">Technologies Behind the System</div>
+    <div class="tools-list">
+        <p>📊 <strong>Pandas & NumPy:</strong> Data analysis and numerical computing.</p>
+        <p>🤖 <strong>Scikit-learn & XGBoost:</strong> Machine learning and predictive modeling.</p>
+        <p>📈 <strong>Matplotlib, Seaborn & Plotly:</strong> Data visualization and insights.</p>
+        <p>💾 <strong>Joblib:</strong> Model saving and loading for deployment.</p>
+        <p>☁️ <strong>Cloud Deployment:</strong> Ensures scalability, availability, and real-time processing.</p>
+    </div>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        &copy; 2025 Smarter Traffic • Greener Cities • Sustainable Future
+    </footer>
+
+</body>
+</html>
