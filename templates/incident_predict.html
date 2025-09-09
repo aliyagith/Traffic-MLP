@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Incident/Disruption Prediction</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0f1320; color:#fff; margin:0; padding:20px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { margin-bottom: 12px; }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; background:#1b2236; padding:16px; border-radius:10px; }
+    label { display:block; font-size: 0.9em; margin-bottom: 6px; color:#e6e6e6; }
+    input, select { width:100%; padding:8px; border-radius:6px; border:1px solid #2f3a5a; background:#0f1320; color:#fff; }
+    .btn { background:#2b5876; color:#fff; padding:10px 16px; border:none; border-radius:8px; cursor:pointer; margin-top: 8px; }
+    .card { background:#1b2236; padding:14px; border-radius:10px; margin-top:16px; }
+    a { color:#9bd1ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Incident/Disruption Likelihood</h1>
+    <p>Predict whether a random incident/disruption is likely, based on city conditions.</p>
+    {% if error %}
+    <div class="card" style="border:1px solid #e57373;color:#ffcccc">Error: {{ error }}</div>
+    {% endif %}
+    <form method="post">
+      <div>
+        <label>City</label>
+        <select name="City">
+          <option>SolarisVille</option>
+          <option>AquaCity</option>
+          <option>Neuroburg</option>
+          <option>Ecoopolis</option>
+          <option>TechHaven</option>
+          <option>MetropolisX</option>
+        </select>
+      </div>
+      <div>
+        <label>Vehicle Type</label>
+        <select name="Vehicle Type">
+          <option>Car</option>
+          <option>Autonomous Vehicle</option>
+          <option>Drone</option>
+          <option>Flying Car</option>
+        </select>
+      </div>
+      <div>
+        <label>Weather</label>
+        <select name="Weather">
+          <option>Clear</option>
+          <option>Rainy</option>
+          <option>Snowy</option>
+          <option>Solar Flare</option>
+          <option>Electromagnetic Storm</option>
+        </select>
+      </div>
+      <div>
+        <label>Economic Condition</label>
+        <select name="Economic Condition">
+          <option>Stable</option>
+          <option>Booming</option>
+          <option>Recession</option>
+        </select>
+      </div>
+      <div>
+        <label>Day Of Week</label>
+        <select name="Day Of Week">
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+        </select>
+      </div>
+      <div>
+        <label>Hour Of Day</label>
+        <input type="number" name="Hour Of Day" min="0" max="23" value="8" />
+      </div>
+      <div>
+        <label>Speed</label>
+        <input type="number" step="0.01" name="Speed" value="50" />
+      </div>
+      <div>
+        <label>Is Peak Hour</label>
+        <input type="checkbox" name="Is Peak Hour" />
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <button class="btn" type="submit">Predict Incident</button>
+        <a href="/" class="btn" style="text-decoration:none; background:#4e4376;">Home</a>
+      </div>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="card">
+      <h3>Prediction: {{ 'Incident likely' if prediction==1 else 'No incident likely' }}</h3>
+      <p>Probability of incident: {{ '%.2f'|format(probability*100) }}%</p>
+      {% if explanation %}
+      <ul>
+        {% for line in explanation %}
+        <li>{{ line }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
+

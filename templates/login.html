@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login • Urban Traffic</title>
+  <style>
+    body { font-family:'Segoe UI', Arial, sans-serif; background: radial-gradient(1200px 600px at 10% 0%, #0f1320 10%, #0b0f1a 55%, #0a0d17 100%); color:#eef3ff; margin:0; padding:0; display:flex; align-items:center; justify-content:center; min-height:100vh; overflow:hidden; }
+    .bg-bubbles { position: absolute; inset: 0; overflow:hidden; pointer-events:none; }
+    .bubble { position:absolute; border-radius:50%; filter: blur(40px); opacity:.25; animation: floatUp 14s linear infinite; }
+    .bubble.b1 { width:220px; height:220px; left:6%; bottom:-220px; background:#2b5876; animation-delay: 0s; }
+    .bubble.b2 { width:280px; height:280px; right:10%; bottom:-280px; background:#4e4376; animation-delay: 3s; }
+    .bubble.b3 { width:160px; height:160px; left:50%; bottom:-160px; background:#ffe06622; animation-delay: 6s; }
+    @keyframes floatUp { 0% { transform: translateY(0) translateX(0);} 50% { transform: translateY(-40vh) translateX(20px);} 100% { transform: translateY(-90vh) translateX(-20px);} }
+    .card { width: 980px; background: rgba(22, 28, 44, 0.55); padding: 32px; border-radius: 18px; box-shadow: 0 20px 60px rgba(8,10,20,.55); display:grid; grid-template-columns: 1.15fr 1fr; gap:28px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); position:relative; z-index:1; }
+    .aside { background: linear-gradient(180deg, rgba(69,82,130,0.25), rgba(36,44,66,0.35)); border-radius: 14px; padding: 0; display:flex; flex-direction:column; justify-content:center; border: 1px solid rgba(255,255,255,0.08); overflow:hidden; min-height: 480px; }
+    .aside img { width:100%; height:100%; object-fit: cover; display:block; }
+    h1 { margin: 0 0 12px 0; font-size:1.9em; color:#ffe066; }
+    p { margin: 0 0 18px 0; color:#cfdaf7; }
+    label { font-size:.95em; color:#e6e6e6; display:block; margin-bottom:6px; }
+    .input-wrap { position:relative; }
+    .input-wrap input { width:80%; padding:12px 56px 12px 14px; border-radius:12px; border:1px solid #2f3a5a; background:#0f1320; color:#fff; outline:none; transition: border .15s ease, box-shadow .15s ease; }
+    .input-wrap input:focus { border-color:#6ea8ff; box-shadow: 0 0 0 3px #2b587633; }
+    .input-wrap .toggle { position:absolute; right:10px; top:50%; transform: translateY(-50%); background: rgba(155,209,255,0.08); border:1px solid #2f3a5a; color:#9bd1ff; cursor:pointer; font-size:.85em; line-height:1; padding:6px 10px; border-radius:999px; display:inline-block; width:auto; height:auto; }
+    .input-wrap .toggle:focus { outline:none; box-shadow: 0 0 0 2px #2b587644; }
+    .btn { width:100%; background:linear-gradient(90deg,#2b5876,#4e4376); color:#fff; padding:14px; border:none; border-radius:12px; margin-top:16px; cursor:pointer; font-weight:600; box-shadow: 0 6px 22px rgba(75,90,140,.35); transition: transform .12s ease, box-shadow .12s ease, opacity .2s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(75,90,140,.45); }
+    .row { display:flex; justify-content:space-between; margin-top:12px; font-size:.92em; }
+    a { color:#9bd1ff; text-decoration:none; }
+    .error { background:#3b1f1f; border:1px solid #e57373; color:#ffcccc; padding:10px 12px; border-radius:12px; margin-bottom:12px; }
+    @media (max-width: 900px) { .card { grid-template-columns: 1fr; width: 94vw; } .aside { min-height:200px; } }
+  </style>
+</head>
+<body>
+  <div class="bg-bubbles">
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+  </div>
+  <div class="card">
+    <div>
+      <h1>Welcome back</h1>
+      <p style="max-width:520px">Log in to access predictions and insights.</p>
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+      <form method="post" action="/auth/login" novalidate>
+        <div>
+          <label>Email</label>
+          <div class="input-wrap"><input type="email" name="email" id="email" placeholder="you@example.com" required /></div>
+        </div>
+        <div style="margin-top:12px;">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input type="password" name="password" id="password" placeholder="••••••••" required />
+            <button type="button" class="toggle" id="togglePw" style="margin-right: 25px;">Show</button>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; font-size:.92em; color:#cfdaf7;">
+          <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+            <input type="checkbox" id="remember" style="width:18px; height:18px; accent-color:#4e4376;" />
+            Remember me
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button class="btn" type="submit">Login</button>
+        <div class="row">
+          <span>New here? <a href="/register">Create account</a></span>
+          <a href="/">Home</a>
+        </div>
+      </form>
+    </div>
+    <div class="aside">
+      <img src="https://images.pexels.com/photos/2290438/pexels-photo-2290438.jpeg" alt="City night traffic" />
+    </div>
+  </div>
+  <script>
+    const pw = document.getElementById('password');
+    const togglePw = document.getElementById('togglePw');
+    togglePw.addEventListener('click', ()=>{ pw.type = pw.type === 'password' ? 'text' : 'password'; togglePw.textContent = pw.type === 'password' ? 'Show' : 'Hide'; });
+  </script>
+</body>
+</html>

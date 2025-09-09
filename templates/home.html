@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Sustainability</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f4; color:#333; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 40px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky; top:0; z-index:1000;
+    }
+    nav h1 { color: #000000; }
+    nav a { margin-left: 20px; text-decoration: none; color: #333; font-weight: bold; }
+    nav a:hover { color: #bb1a1a; }
+
+    /* Navbar */
+    nav {
+      background:#ffffff; 
+      color:white;
+      padding:1px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+
+   /* Hero Section (dark overlay) */
+    .hero {
+      position: relative; height: 85vh;
+      background: url("https://images.pexels.com/photos/27374365/pexels-photo-27374365/free-photo-of-a-busy-city-street-with-many-cars-and-motorcycles.jpeg") no-repeat center/cover;
+      display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+    }
+    .hero::after {
+      content: ""; position: absolute; top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.65); /* Dark overlay */
+    }
+    .hero-content {
+      position: relative; z-index: 1; max-width: 700px;
+    }
+    .hero h2 { font-size: 3em; margin-bottom: 15px; }
+    .hero p { font-size: 1.3em; margin-bottom: 20px; }
+    .btn {
+      padding: 12px 25px; background: #c62828; border: none; color: white;
+      font-size: 1em; font-weight: bold; cursor: pointer; border-radius: 6px;
+    }
+    .btn:hover { background: #a21616; }
+
+
+    /* Cards Section */
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px; padding: 60px;
+    }
+    .card {
+      position: relative; overflow: hidden; border-radius: 12px; cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); background:rgb(5, 3, 3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s; }
+    .card:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .card:hover img { transform: scale(1.05); }
+    .card h3 { margin:15px; font-size:1.3em; color:#fffdfd; }
+    .card p { margin:0 15px 20px; font-size:0.95em; line-height:1.4; }
+
+    /* Stats Section */
+    .stats { background:#fff; padding:80px 20px; text-align:center; }
+    .stats h2 { margin-bottom:40px; font-size:2em; }
+    .stat-box { display:inline-block; margin:20px 40px; }
+    .stat-number { font-size:2.5em; color:#c62828; font-weight:bold; }
+    .stat-label { font-size:1.2em; margin-top:10px; }
+
+    /* Key Findings Section */
+    .findings { background:#0043a1; padding:80px 40px; text-align:center; }
+    .findings h2 { font-size:2em; margin-bottom:40px; }
+    .finding-grid {
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap:30px; max-width:1100px; margin:0 auto;
+    }
+    .finding {
+      background:white; border-radius:12px; padding:25px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.08); transition: transform 0.3s;
+    }
+    .finding:hover { transform:translateY(-5px); }
+    .finding h3 { color:#c62828; margin-bottom:10px; }
+    .finding p { font-size:0.95em; line-height:1.5; }
+    /* CTA */
+    .cta { background: #070404; color: white; text-align: center; padding: 60px 20px; }
+    .cta h2 { font-size: 2em; margin-bottom: 10px; }
+    .cta p { margin-bottom: 20px; font-size: 1.1em; }
+
+    /* Footer */
+    footer {
+      background:#fff9f9; color:#030202; padding:3px; text-align:center;
+    }
+    footer a { color:#fff; text-decoration:none; margin:0 10px; }
+    footer a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>Traffic Sustainability</h1>
+    <div>
+      <a href="/About.html">About</a>
+      <a href="/incident_prediction.html">Incident</a>
+      <a href="/density_prediction">Traffic Density</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Optimizing Urban Traffic for a Sustainable Future</h2>
+      <p>Leveraging technology and smart planning to make our cities greener, faster, and more efficient.</p>
+      <button class="btn">Explore Dashboard</button>
+    </div>
+  </section>
+
+  <!-- Interactive Cards -->
+  <section class="cards">
+    <div class="card" onclick="window.location.href='/incident_prediction.html'" style="cursor: pointer;">
+        <h3>🎯 Incident Prediction</h3>
+      <p>The 'Random Event Occurred' indicator highlights whether any unexpected incidents, such as accidents, road closures, or disruptions, took place during the observation.</p>
+    </div>
+    <div class="card" onclick="window.location.href='/density_prediction.html'" style="cursor: pointer;">
+        <h3>📈 Traffic Density Prediction</h3>
+        <p>Traffic Density Prediction helps in forecasting the level of congestion on roads by analyzing various factors such as vehicle count, road conditions, incidents, and weather.</p>
+    </div>
+  </section>
+
+
+  <!-- Key Findings Section -->
+  <section class="findings">
+    <h2>Key Findings</h2>
+    <div class="finding-grid">
+      <div class="finding">
+        <h3>📉 Traffic Characteristics</h3>
+        <br>City</br>
+        <br>Vehicle Type</br>
+        <br>Traffic Density</br>
+        <br>Time/Day</br>
+      </div>
+      <div class="finding">
+        <h3>🚸 External Influences</h3>
+        <br>Weather Conditions</br>
+        <br>Economic Conditions</br>
+        <br>Random Event Occurred</br>
+      </div>
+      <div class="finding">
+        <h3>🌍 Sustainability Factors</h3>
+        <p>Eco-friendly mobility / Smart urban solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <h2>Explore the Future of Urban Mobility</h2>
+<p>Discover how traffic patterns, random events, and smart mobility solutions shape sustainable cities.</p>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 025 Urban Mobility Insights | Shaping Smarter and Sustainable Cities</p>
+  </footer>
+</body>
+</html>

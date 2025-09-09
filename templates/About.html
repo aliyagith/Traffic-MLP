@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Futuristic Urban Traffic</title>
+    <style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: radial-gradient(1200px 600px at 10% 0%, #0f1320 10%, #0b0f1a 55%, #f8f8f8 100%);
+        color: #000000;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        z-index: 1;
+    }
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        background: rgba(16, 20, 30, 0.85);
+        border-radius: 0 0 20px 20px;
+        padding: 18px 40px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        font-size: 1.3em;
+        letter-spacing: .6px;
+        color: #f9fafb;
+    }
+    .logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: url('https://cdn-icons-png.flaticon.com/512/854/854878.png') center/cover no-repeat, 
+                    conic-gradient(from 0deg, #2b5876 0 25%, #4e4376 25% 50%, #2b5876 50% 75%, #4e4376 75% 100%);
+        border: 2px solid #fff;
+        box-shadow: 0 2px 8px #2b587655;
+        animation: spin 10s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(1turn); } }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+    }
+    nav a {
+        color: #e1e7ff;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 500;
+        transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s ease;
+    }
+    nav a:hover, nav .btn:hover {
+        background: #fff;
+        color: #1d3557;
+        border-color: #fff;
+        transform: translateY(-1px);
+    }
+    nav .btn {
+        background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+        color: #fff;
+        border: 1.5px solid #fff;
+        font-weight: 600;
+        margin-left: 10px;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    /* Hero */
+    .hero {
+        background:url('https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg') center/cover no-repeat;
+        height:65vh; 
+        display:flex; 
+        align-items:center; 
+        justify-content:center;
+        position:relative; 
+        color:white; 
+        text-align:center;
+    }
+
+    .hero::after {
+        content:""; position:absolute; inset:0; background:rgba(0, 0, 0, 0.322);
+    }
+    .hero div {position:relative; z-index:2;}
+    .hero h1 {font-size:4em;}
+    .hero p {margin-top:10px; font-size:1.2em;}
+
+    section {padding:60px 40px;}
+
+    /* Overview */
+    .overview {max-width:900px; margin:auto; text-align:center;}
+    .overview p {font-size:1.2em; color:#5a5454;}
+
+    /* Objective */
+    .mv-cards {
+        display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:25px; margin-top:40px;
+    }
+    .mv-card {
+        background:url('https://images.pexels.com/photos/5075316/pexels-photo-5075316.jpeg'); border-radius:12px; padding:25px;
+        box-shadow:0 6px 15px rgba(4,4.0,0.1); transition:transform .3s;
+        text-align:center;
+    }
+    .mv-card:hover {transform:translateY(-8px);}
+    .mv-card img {width:60px; margin-bottom:15px;}
+    .mv-card h3 {margin-bottom:10px; color:#040827;}
+
+    /* Challenges */
+    .challenges {background:#000000;}
+    .challenge-boxes {
+        display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:25px; margin-top:30px;
+    }
+    .challenge {
+        background:#fff; padding:25px; border-radius:12px;
+        box-shadow:0 6px 15px rgba(0,0,0,0.1); transition:.3s;
+    }
+    .challenge:hover {transform:scale(1.02);}
+    .challenge img {width:100%; border-radius:8px; margin-bottom:15px;}
+    .challenge h3 {margin-bottom:10px; color:#dc2626;}
+    .challenge h4 {margin:10px 0; color:#360e24;}
+
+    /* CTA */
+    .cta {
+        background:#450404; color:white; text-align:center;
+        padding:60px 30px;
+    }
+    .cta h2 {margin-bottom:20px;}
+    .cta a {
+        display:inline-block; padding:12px 24px; border-radius:6px;
+        background:#cfa603; color:#222; text-decoration:none; font-weight:bold;
+        transition:.3s;
+    }
+    .cta a:hover {background:#eab308;}
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+    <div class="nav">
+        <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Urban Traffic<span style="font-weight:400"> • Sustainability</span></span>
+    </div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="login.html">Login</a>
+    </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div>
+        <h1>About Our Project</h1>
+        <p>This project analyzes futuristic urban traffic patterns and energy use to provide insights for smarter and more sustainable city mobility solutions.</p>
+    </div>
+</section>
+
+<!-- Overview -->
+<section class="overview">
+    <h2>Project Overview</h2>
+    <p>
+        This <b>Project is about Smart Mobility and Futuristic Taffic Sustainability.</b> The main Goal is to make city travel easier, faster, and eco-friendly by using
+        modern technologies such as smart traffic systems, electric vehicles, ride-shaping , data-driven planning. Our project focusses on reducing traffic jams, lowering pollution, and improving transport efficiency so that people can move safely and comfortably in urban areas.
+        </p>
+</section>
+
+<!-- Objective -->
+<section>
+    <h2 style="text-align:center;">Objectives</h2>
+    <div class="mv-cards">
+    <div class="mv-card">
+        <h3>Goal</h3>
+        <p>To understand and improve urban traffic patterns and sustainability in futuristic cities. To provide actionable insights that help city planners, transportation engineers, and policymakers implement smarter, greener, and more efficient traffic management systems in urban environments of the future.</p>
+    </div>
+    <div class="mv-card">
+        <h3>Purpose</h3>
+        <p>To support sustainable urban planning by reducing congestion, optimizing energy use, and promoting eco-friendly transportation solutions.</p>
+    </div>
+    </div>
+</section>
+
+<!-- Challenges & Solutions -->
+<section class="challenges">
+    <h2 style="text-align:center;">Challenges</h2>
+    <div class="challenge-boxes">
+    <div class="challenge">
+        <img src="https://miro.medium.com/v2/resize:fit:875/1*OUZm4c4S5a1XGuhdEV-8Sw.jpeg" alt="Challenge">
+        <h3>Challenge</h3>
+        <p>Predicting rare traffic incidents (like accidents or road closures) was difficult because they occurred very rarely in the dataset.</p>
+        <h4>Solution</h4>
+        <p>Applied oversampling techniques and used class weighting to balance the model, which improved the detection of rare events.</p>
+    </div>
+    <div class="challenge">
+        <img src="https://img-cdn.publive.online/fit-in/640x360/filters:format(webp)/entrackr/media/post_attachments/wp-content/uploads/2019/09/Traffic-AI-control.jpg" alt="Challenge">
+        <h3>Challenge</h3>
+        <p>Predicting traffic density was difficult because it depends on many factors (weather, time, vehicle type, economic conditions) that interact in complex ways.</p>
+        <h4>Solution</h4>
+        <p>Used advanced models like Random Forest and XGBoost to capture these non-linear relationships and improve prediction accuracy.</p>
+    </div>
+    <div class="challenge">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuLD5TXjaCJzQrIDZz7TbYc8d-5stOBYWjZw&s" alt="Challenge">
+        <h3>Challenge</h3>
+        <p>High Dimensionality of Data- Handling over 1.2 million records was computationally intensive</p>
+        <h4>Solution</h4>
+        <p>Used chunk processing, optimized data types, and feature selection to reduce memory usage and speed up training.</p>
+    </div>
+    </div>
+</section>
+
+<!-- footer -->
+<section class="cta">
+    <h2>Explore Our Findings</h2>
+    <p>Discover interactive dashboards, datasets, and insights.</p>
+    <a href="/index.html">Go to Home</a>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Futuristic Urban Traffic & Sustainability</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% 0%, #0f1320 10%, #0b0f1a 55%, #0a0d17 100%);
+      color: #eef3ff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(4px) brightness(0.6);
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(4px);
+    }
+    header {
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 4px 24px rgb(231, 225, 225);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background: rgba(16, 20, 30, 0.78);
+      border-radius: 0 0 20px 20px;
+      padding: 18px 40px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.3em;
+      letter-spacing: .6px;
+    }
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: url('https://cdn-icons-png.flaticon.com/512/854/854878.png') center/cover no-repeat, conic-gradient(from 0deg, #2b5876 0 25%, #4e4376 25% 50%, #2b5876 50% 75%, #4e4376 75% 100%);
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px #2b587655;
+      animation: spin 10s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(1turn); } }
+    nav a {
+      color: #e1e7ff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s ease;
+    }
+    nav a:hover, nav .btn:hover {
+      background: #fff;
+      color: #1d3557;
+      border-color: #fff;
+      transform: translateY(-1px);
+    }
+    nav .btn {
+      background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+      color: #fff;
+      border: 1.5px solid #fff;
+      font-weight: 600;
+      margin-left: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 8vw 40px 8vw;
+      min-height: 70vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      max-width: 620px;
+      animation: fadeInLeft 1.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-60px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+    .hero h1 {
+      font-size: 3.4em;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      color: #f5f8ff;
+      text-shadow: 0 2px 12px #ededed55;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 28px;
+      color: #d9e3ff;
+    }
+    .hero-actions {
+      display:flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .hero-actions a {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
+      color: #fff;
+      border-radius: 7px;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 500;
+      box-shadow: 0 2px 8px #2b587633;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .hero-actions a:hover {
+      background: #fff;
+      color: #2b5876;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 4px 16px #2b587655;
+    }
+    .hero-img {
+      width: 500px;
+      max-width: 90vw;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px #2b587655;
+      margin-top: 30px;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px);}
+      50% { transform: translateY(-18px);}
+      100% { transform: translateY(0px);}
+    }
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; align-items: center; text-align: center; }
+      .hero-content { align-items: center; }
+      .hero-actions { justify-content: center; }
+      .hero-img { margin-top: 40px; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 30px 4vw 20px 4vw; }
+      .hero h1 { font-size: 2em; }
+      .hero-img { width: 100%; }
+    }
+
+    /* Section Styles */
+    section {
+      margin: 0 auto 60px auto;
+      max-width: 1200px;
+      padding: 0 24px;
+    }
+    .section-title {
+      font-size: 2.2em;
+      color: #ffe066;
+      margin-bottom: 24px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    section p {
+      text-align: center;
+      font-size: 1.1em;
+      color: #cfdaf7;
+      max-width: 800px;
+      margin: 0 auto 32px auto;
+      line-height: 1.6em;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      margin-top: 24px;
+    }
+    .feature-card {
+      background: rgba(36, 44, 66, 0.92);
+      border-radius: 16px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 24px #2b587633;
+      text-align: center;
+      transition: transform 0.2s;
+      animation: fadeInUp 1.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px #2b587655;
+    }
+    .feature-card img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #ffe06655;
+    }
+    .feature-card h3 {
+      color: #ffe066;
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Stats Section */
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 18px 32px;
+      text-align: center;
+      min-width: 120px;
+      box-shadow: 0 2px 8px #2b587633;
+      animation: fadeInUp 1.2s;
+    }
+    .stat-box .num {
+      font-size: 2em;
+      font-weight: 700;
+      color: #ffe066;
+    }
+    .stat-box .label {
+      color: #e0eafc;
+      font-size: 1em;
+    }
+
+    /* Future Scope */
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .team-card {
+      background: rgba(36, 44, 66, 0.92);
+      border-radius: 16px;
+      padding: 24px 18px;
+      text-align: center;
+      width: 220px;
+      box-shadow: 0 2px 8px #2b587633;
+      animation: fadeInUp 1.2s;
+    }
+    .team-card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      border: 3px solid #ffe066;
+    }
+    .team-card h4 {
+      color: #ffe066;
+      margin-bottom: 4px;
+      font-size: 1.1em;
+    }
+    .team-card p {
+      color: #e0eafc;
+      font-size: 0.98em;
+    }
+
+    footer {
+      text-align: center;
+      color: #e0eafc;
+      padding: 30px 0 18px 0;
+      font-size: 1.1em;
+      opacity: 0.85;
+      letter-spacing: 1px;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="https://www.pexels.com/download/video/5607785/" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="nav">
+      <div class="brand">
+        
+        <div class="logo" aria-hidden="true"></div>
+        <span>Urban Traffic<span style="font-weight:400"> • Sustainability</span></span>
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/config">Features</a>
+        {% if current_user and current_user.id %}
+          <a href="/logout" class="btn">Logout</a>
+        {% else %}
+          <a href="/login">Login</a>
+          <a href="/register" class="btn">Register</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <!-- ===== HERO SECTION ===== -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Futuristic Urban Traffic & Sustainability</h1>
+    <p>
+      This project is a data-driven project designed to study how future 
+      cities can manage mobility in smarter and more sustainable ways.
+      Use machine learning to understand how weather, economy, vehicle 
+      types, and more affect urban mobility and sustainability.</p> 
+    </p>
+    <div class="hero-actions">
+      <a href="/dashboard/density">Density Dashboard</a>
+      <a href="/dashboard/incident">Incident Dashboard</a>
+      <a href="/predict/density">Predict Density</a>
+      <a href="/predict/incident">Predict Incident</a>
+    </div>
+  </div>
+  <img class="hero-img" src="https://images.pexels.com/photos/1600757/pexels-photo-1600757.jpeg" alt="Futuristic City Traffic">
+</section>
+
+
+  <!-- ===== FEATURES SECTION ===== -->
+  <section id="features">
+    <div class="section-title">Smart Traffic Insight</div>
+    <p>
+      A quick look at our project in numbers.
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="City Data">
+        <h3>Futuristic City Data</h3>
+        <p>Analyze traffic in six fictional cities with diverse vehicle types, weather, and economic conditions.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/190/190406.png" alt="Event Factors">
+        <h3>Event & Time Factors</h3>
+        <p>Study the impact of peak hours, random events, and time of day on traffic density.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910791.png" alt="Energy">
+        <h3>Energy & Sustainability</h3>
+        <p>Estimate energy consumption and visualize sustainability metrics for smarter cities.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="ML Models">
+        <h3>ML Model Comparison</h3>
+        <p>Compare Random Forest and XGBoost predictions for traffic forecasting accuracy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS SECTION ===== -->
+  <section id="stats">
+    <div class="section-title">Project Stats</div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="num">1.2M+</div>
+        <div class="label">Records</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">6</div>
+        <div class="label">Futuristic Cities</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">11</div>
+        <div class="label">Key Features</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">2</div>
+        <div class="label">ML Models</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FUTURE SCOPE SECTION ===== -->
+  <section id="futurescope">
+    <div class="section-title"> Future Scope </div>
+    <p>
+      The Future scope of the project includes collecting data related to traffic density, vehicle types, and congestion timings. It involves analyzing traffic flow, calculating emissions, and identifying factors contributing to pollution and delays. The project also explores sustainable transport options such as electric vehicles, carpooling, and smart traffic systems.
+    </p>
+  </section>
+
+    <footer class="bg-gray-800 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">&copy; 2025 Smarter Traffic • Greener Cities • Sustainable Future. All rights reserved.</p>
+        </div>
+    </footer>

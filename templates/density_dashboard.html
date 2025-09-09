@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Traffic Density Dashboard</title>
+  <style>
+    body { font-family:'Segoe UI', Arial, sans-serif; background:#0b0f1a; color:#eef3ff; margin:0; }
+    .wrap { max-width:1200px; margin: 20px auto; padding: 0 16px; }
+    .header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; }
+    .kpis { display:grid; grid-template-columns: repeat(auto-fit, minmax(1fr)); gap:12px; margin: 12px 0 22px 0; }
+    .kpi { background: rgba(36,44,66,0.92); border-radius:12px; padding:14px; text-align:center; border:1px solid rgba(255,255,255,0.08); }
+    .kpi .label { color:#cfdaf7; font-size:.92em; }
+    .kpi .val { color:#ffe066; font-size:1.6em; font-weight:700; }
+    .grid { display:grid; grid-template-columns: 1fr; gap:16px; }
+    @media (min-width: 900px){ .grid { grid-template-columns: 1fr 1fr; } }
+    .card { background: rgba(22,28,44,0.55); border-radius:12px; padding:10px; border:1px solid rgba(255,255,255,0.08); }
+    a { color:#9bd1ff; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h2>Traffic Density Dashboard</h2>
+      <div>
+        <a href="/">Home</a>
+      </div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="label">Peak Hour</div><div class="val">{{ kpis.peak_hour }}</div></div>
+      <div class="kpi"><div class="label">Peak Density</div><div class="val">{{ '%.3f'|format(kpis.peak_density) }}</div></div>
+      <div class="kpi"><div class="label">Lowest Hour</div><div class="val">{{ kpis.low_hour }}</div></div>
+      <div class="kpi"><div class="label">Lowest Density</div><div class="val">{{ '%.3f'|format(kpis.low_density) }}</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">{{ line_html|safe }}</div>
+      <div class="card">{{ heat_html|safe }}</div>
+      <div class="card">{{ bar_html|safe }}</div>
+      <div class="card">{{ box_html|safe }}</div>
+      <div class="card" style="grid-column:1/-1;">{{ scatter_html|safe }}</div>
+    </div>
+  </div>
+</body>
+</html>
+
+

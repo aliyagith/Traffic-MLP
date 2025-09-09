@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Account • Urban Traffic</title>
+  <style>
+    body { font-family:'Segoe UI', Arial, sans-serif; background: radial-gradient(1200px 600px at 10% 0%, #0f1320 10%, #0b0f1a 55%, #0a0d17 100%); color:#eef3ff; margin:0; padding:0; display:flex; align-items:center; justify-content:center; min-height:100vh; }
+    .card { width: 920px; background: rgba(36, 44, 66, 0.92); padding: 28px; border-radius: 14px; box-shadow: 0 16px 48px rgba(18,22,33,.55); display:grid; grid-template-columns: 1.1fr 1fr; gap:28px; }
+    .aside { background: rgba(255,255,255,0.06); border-radius: 12px; padding: 18px; display:flex; flex-direction:column; justify-content:center; }
+    h1 { margin: 0 0 12px 0; font-size:1.9em; color:#ffe066; }
+    p { margin: 0 0 18px 0; color:#cfdaf7; }
+    label { font-size:.95em; color:#e6e6e6; display:block; margin-bottom:6px; }
+    input { width:100%; padding:12px; border-radius:10px; border:1px solid #2f3a5a; background:#0f1320; color:#fff; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    .btn { width:100%; background:linear-gradient(90deg,#2b5876,#4e4376); color:#fff; padding:12px; border:none; border-radius:10px; margin-top:14px; cursor:pointer; font-weight:600; }
+    .row { display:flex; justify-content:space-between; margin-top:12px; font-size:.92em; }
+    a { color:#9bd1ff; text-decoration:none; }
+    .error { background:#3b1f1f; border:1px solid #e57373; color:#ffcccc; padding:10px 12px; border-radius:10px; margin-bottom:12px; }
+    .hint { font-size: .9em; color:#a9b7e3; margin-top:6px; }
+    .meter { height: 8px; background:#0f1320; border:1px solid #2f3a5a; border-radius: 999px; overflow:hidden; }
+    .meter > div { height:100%; width:0%; background: linear-gradient(90deg,#e57373,#ffe066,#6dd47e); transition: width .25s ease; }
+    @media (max-width: 900px) { .card { grid-template-columns: 1fr; width: 94vw; } }
+  </style>
+  <style>
+    /* Enhancements */
+    body { overflow:hidden; }
+    .bg-bubbles { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+    .bubble { position:absolute; border-radius:50%; filter: blur(40px); opacity:.25; animation: floatUp 14s linear infinite; }
+    .bubble.b1 { width:220px; height:220px; left:6%; bottom:-220px; background:#2b5876; animation-delay: 0s; }
+    .bubble.b2 { width:280px; height:280px; right:10%; bottom:-280px; background:#4e4376; animation-delay: 3s; }
+    .bubble.b3 { width:160px; height:160px; left:50%; bottom:-160px; background:#ffe06622; animation-delay: 6s; }
+    @keyframes floatUp { 0% { transform: translateY(0) translateX(0);} 50% { transform: translateY(-40vh) translateX(20px);} 100% { transform: translateY(-90vh) translateX(-20px);} }
+    .card { width: 980px; background: rgba(22, 28, 44, 0.55); padding: 32px; border-radius: 18px; box-shadow: 0 20px 60px rgba(8,10,20,.55); display:grid; grid-template-columns: 1.15fr 1fr; gap:28px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); position:relative; z-index:1; }
+    .aside { background: linear-gradient(180deg, rgba(69,82,130,0.25), rgba(36,44,66,0.35)); border-radius: 14px; padding: 0; display:flex; flex-direction:column; justify-content:center; border: 1px solid rgba(255,255,255,0.08); overflow:hidden; min-height: 520px; }
+    .aside img { width:100%; height:100%; object-fit: cover; display:block; }
+    .input-wrap { position:relative; }
+    .input-wrap input { width:100%; padding:12px 44px 12px 14px; border-radius:12px; border:1px solid #2f3a5a; background:#0f1320; color:#fff; outline:none; transition: border .15s ease, box-shadow .15s ease; }
+    .input-wrap input:focus { border-color:#6ea8ff; box-shadow: 0 0 0 3px #2b587633; }
+    .input-wrap .toggle { position:absolute; right:8px; top:50%; transform: translateY(-50%); background:transparent; border:none; color:#9bd1ff; cursor:pointer; font-size:.9em; }
+    .btn { border-radius:12px; box-shadow: 0 6px 22px rgba(75,90,140,.35); transition: transform .12s ease, box-shadow .12s ease, opacity .2s ease; }
+    .btn:disabled { opacity:.55; cursor:not-allowed; box-shadow:none; }
+    .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(75,90,140,.45); }
+  </style>
+</head>
+<body>
+  <div class="bg-bubbles">
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+  </div>
+  <div class="card">
+    <div>
+      <h1>Create your account</h1>
+      <p>Join to use predictions and save preferences.</p>
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+      <form method="post" id="regForm" novalidate>
+        <div class="grid">
+          <div>
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required />
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div style="margin-top:12px;">
+          <label>Password</label>
+          <input id="pw" type="password" name="password" placeholder="••••••••" required />
+          <div class="hint">Use 8+ chars with a mix of letters, numbers, and symbols.</div>
+          <div class="meter" style="margin-top:8px;"><div id="meterFill"></div></div>
+        </div>
+        <div style="margin-top:12px;">
+          <label>Confirm Password</label>
+          <input id="confirm" type="password" name="confirm" placeholder="••••••••" required />
+          <div id="matchHint" class="hint"></div>
+        </div>
+        <div style="margin-top:10px; display:flex; align-items:center; gap:10px; font-size:.92em; color:#cfdaf7;">
+          <input type="checkbox" id="terms" style="width:18px; height:18px; accent-color:#4e4376;" />
+          <label for="terms" style="margin:0;">I agree to the <a href="#">Terms</a> and <a href="#">Privacy</a>.</label>
+        </div>
+        <button class="btn" type="submit" id="submitBtn" disabled>Create Account</button>
+        <div class="row">
+          <span>Already have an account? <a href="/login">Login</a></span>
+          <a href="/">Home</a>
+        </div>
+      </form>
+    </div>
+    <div class="aside">
+      <img src="https://images.pexels.com/photos/1600757/pexels-photo-1600757.jpeg" alt="Futuristic city traffic" />
+    </div>
+  </div>
+  <script>
+    const pw = document.getElementById('pw');
+    const cf = document.getElementById('confirm');
+    const meter = document.getElementById('meterFill');
+    const matchHint = document.getElementById('matchHint');
+    function scorePassword(v){
+      let s = 0; if(!v) return 0;
+      const sets = [/[a-z]/, /[A-Z]/, /\d/, /[^\w]/];
+      sets.forEach(r=>{ if(r.test(v)) s+=1;});
+      if(v.length >= 12) s+=2; else if(v.length >= 8) s+=1; else s+=0;
+      return Math.min(5, s);
+    }
+    function renderMeter(){
+      const sc = scorePassword(pw.value);
+      const pct = [0,25,45,65,85,100][sc];
+      meter.style.width = pct + '%';
+    }
+    function renderMatch(){
+      if(!cf.value) { matchHint.textContent = ''; return; }
+      if(cf.value === pw.value) { matchHint.textContent = 'Passwords match'; matchHint.style.color = '#6dd47e'; }
+      else { matchHint.textContent = 'Passwords do not match'; matchHint.style.color = '#e57373'; }
+    }
+    pw.addEventListener('input', renderMeter);
+    cf.addEventListener('input', renderMatch);
+    renderMeter();
+  </script>
+  <script>
+    // Lightweight client-side validation and modern UX toggles
+    const nameEl = document.querySelector('input[name="name"]');
+    const emailEl = document.querySelector('input[name="email"]');
+    const nameHint = document.createElement('div');
+    const emailHint = document.createElement('div');
+    nameHint.className = 'hint'; emailHint.className = 'hint';
+    nameEl && nameEl.parentElement && nameEl.parentElement.appendChild(nameHint);
+    emailEl && emailEl.parentElement && emailEl.parentElement.appendChild(emailHint);
+    const terms = document.getElementById('terms');
+    const submitBtn = document.getElementById('submitBtn');
+    function validateName(){ const ok = nameEl && nameEl.value.trim().length >= 2; if(nameHint){ nameHint.textContent = ok ? '' : 'Please enter at least 2 characters.';} return ok; }
+    function validateEmail(){ const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i; const ok = emailEl && re.test(emailEl.value.trim()); if(emailHint){ emailHint.textContent = ok ? '' : 'Please enter a valid email address.';} return ok; }
+    function isStrong(){
+      const v = pw.value || '';
+      let s = 0; if(!v) return false;
+      if(/[a-z]/.test(v)) s++; if(/[A-Z]/.test(v)) s++; if(/\d/.test(v)) s++; if(/[^\w]/.test(v)) s++;
+      if(v.length >= 12) s+=2; else if(v.length >= 8) s+=1;
+      return s >= 3;
+    }
+    function canSubmit(){ return validateName() && validateEmail() && isStrong() && (pw.value === cf.value) && (terms && terms.checked); }
+    function updateSubmit(){ if(submitBtn) submitBtn.disabled = !canSubmit(); }
+    nameEl && nameEl.addEventListener('input', ()=>{ validateName(); updateSubmit(); });
+    emailEl && emailEl.addEventListener('input', ()=>{ validateEmail(); updateSubmit(); });
+    terms && terms.addEventListener('change', updateSubmit);
+    pw.addEventListener('input', updateSubmit);
+    cf.addEventListener('input', updateSubmit);
+    updateSubmit();
+    document.getElementById('regForm').addEventListener('submit', (e)=>{ if(!canSubmit()) { e.preventDefault(); updateSubmit(); }});
+  </script>
+</body>
+</html>
+
+
