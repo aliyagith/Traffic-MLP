@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,6 +42,7 @@
       height: 100%;
       backdrop-filter: blur(4px);
     }
+
     header {
       border-radius: 0 0 24px 24px;
       box-shadow: 0 4px 24px rgb(231, 225, 225);
@@ -48,6 +50,7 @@
       top: 0;
       z-index: 10;
     }
+
     .nav {
       display: flex;
       align-items: center;
@@ -57,6 +60,7 @@
       border-radius: 0 0 20px 20px;
       padding: 18px 40px;
     }
+
     .brand {
       display: flex;
       align-items: center;
@@ -65,6 +69,7 @@
       font-size: 1.3em;
       letter-spacing: .6px;
     }
+
     .logo {
       width: 42px;
       height: 42px;
@@ -74,7 +79,13 @@
       box-shadow: 0 2px 8px #2b587655;
       animation: spin 10s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(1turn); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
     nav a {
       color: #e1e7ff;
       text-decoration: none;
@@ -84,12 +95,15 @@
       font-weight: 500;
       transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s ease;
     }
-    nav a:hover, nav .btn:hover {
+
+    nav a:hover,
+    nav .btn:hover {
       background: #fff;
       color: #1d3557;
       border-color: #fff;
       transform: translateY(-1px);
     }
+
     nav .btn {
       background: linear-gradient(90deg, #2b5876 0%, #4e4376 100%);
       color: #fff;
@@ -110,6 +124,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .hero-content {
       max-width: 620px;
       animation: fadeInLeft 1.2s;
@@ -118,10 +133,19 @@
       align-items: flex-start;
       gap: 14px;
     }
+
     @keyframes fadeInLeft {
-      from { opacity: 0; transform: translateX(-60px);}
-      to { opacity: 1; transform: translateX(0);}
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
+
     .hero h1 {
       font-size: 3.4em;
       margin-bottom: 18px;
@@ -129,16 +153,19 @@
       color: #f5f8ff;
       text-shadow: 0 2px 12px #ededed55;
     }
+
     .hero p {
       font-size: 1.2em;
       margin-bottom: 28px;
       color: #d9e3ff;
     }
+
     .hero-actions {
-      display:flex;
+      display: flex;
       flex-wrap: wrap;
       gap: 14px;
     }
+
     .hero-actions a {
       display: inline-block;
       padding: 14px 28px;
@@ -151,12 +178,14 @@
       box-shadow: 0 2px 8px #2b587633;
       transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
+
     .hero-actions a:hover {
       background: #fff;
       color: #2b5876;
       transform: translateY(-3px) scale(1.04);
       box-shadow: 0 4px 16px #2b587655;
     }
+
     .hero-img {
       width: 500px;
       max-width: 90vw;
@@ -165,21 +194,53 @@
       margin-top: 30px;
       animation: float 4s ease-in-out infinite;
     }
+
     @keyframes float {
-      0% { transform: translateY(0px);}
-      50% { transform: translateY(-18px);}
-      100% { transform: translateY(0px);}
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-18px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
     }
+
     @media (max-width: 900px) {
-      .hero { flex-direction: column; align-items: center; text-align: center; }
-      .hero-content { align-items: center; }
-      .hero-actions { justify-content: center; }
-      .hero-img { margin-top: 40px; }
+      .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        align-items: center;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-img {
+        margin-top: 40px;
+      }
     }
+
     @media (max-width: 600px) {
-      .hero { padding: 30px 4vw 20px 4vw; }
-      .hero h1 { font-size: 2em; }
-      .hero-img { width: 100%; }
+      .hero {
+        padding: 30px 4vw 20px 4vw;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero-img {
+        width: 100%;
+      }
     }
 
     /* Section Styles */
@@ -188,6 +249,7 @@
       max-width: 1200px;
       padding: 0 24px;
     }
+
     .section-title {
       font-size: 2.2em;
       color: #ffe066;
@@ -195,6 +257,7 @@
       text-align: center;
       letter-spacing: 1px;
     }
+
     section p {
       text-align: center;
       font-size: 1.1em;
@@ -203,12 +266,14 @@
       margin: 0 auto 32px auto;
       line-height: 1.6em;
     }
+
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 32px;
       margin-top: 24px;
     }
+
     .feature-card {
       background: rgba(36, 44, 66, 0.92);
       border-radius: 16px;
@@ -218,10 +283,12 @@
       transition: transform 0.2s;
       animation: fadeInUp 1.2s;
     }
+
     .feature-card:hover {
       transform: translateY(-8px) scale(1.03);
       box-shadow: 0 8px 32px #2b587655;
     }
+
     .feature-card img {
       width: 64px;
       height: 64px;
@@ -229,14 +296,23 @@
       border-radius: 12px;
       box-shadow: 0 2px 8px #ffe06655;
     }
+
     .feature-card h3 {
       color: #ffe066;
       margin-bottom: 10px;
       font-size: 1.3em;
     }
+
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px);}
-      to { opacity: 1; transform: translateY(0);}
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Stats Section */
@@ -247,8 +323,9 @@
       justify-content: center;
       margin-top: 24px;
     }
+
     .stat-box {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       padding: 18px 32px;
       text-align: center;
@@ -256,11 +333,13 @@
       box-shadow: 0 2px 8px #2b587633;
       animation: fadeInUp 1.2s;
     }
+
     .stat-box .num {
       font-size: 2em;
       font-weight: 700;
       color: #ffe066;
     }
+
     .stat-box .label {
       color: #e0eafc;
       font-size: 1em;
@@ -274,6 +353,7 @@
       justify-content: center;
       margin-top: 24px;
     }
+
     .team-card {
       background: rgba(36, 44, 66, 0.92);
       border-radius: 16px;
@@ -283,6 +363,7 @@
       box-shadow: 0 2px 8px #2b587633;
       animation: fadeInUp 1.2s;
     }
+
     .team-card img {
       width: 70px;
       height: 70px;
@@ -290,11 +371,13 @@
       margin-bottom: 12px;
       border: 3px solid #ffe066;
     }
+
     .team-card h4 {
       color: #ffe066;
       margin-bottom: 4px;
       font-size: 1.1em;
     }
+
     .team-card p {
       color: #e0eafc;
       font-size: 0.98em;
@@ -311,9 +394,10 @@
     }
   </style>
 </head>
+
 <body>
 
-    <div class="video-background">
+  <div class="video-background">
     <video autoplay muted loop playsinline>
       <source src="https://www.pexels.com/download/video/5607785/" type="video/mp4">
       Your browser does not support the video tag.
@@ -325,7 +409,7 @@
   <header>
     <div class="nav">
       <div class="brand">
-        
+
         <div class="logo" aria-hidden="true"></div>
         <span>City Traffic<span style="font-weight:400"> • Sustainability</span></span>
       </div>
@@ -334,10 +418,10 @@
         <a href="/about">About</a>
         <a href="/features">Features</a>
         {% if current_user and current_user.id %}
-          <a href="/logout" class="btn">Logout</a>
+        <a href="/logout" class="btn">Logout</a>
         {% else %}
-          <a href="/login">Login</a>
-          <a href="/register" class="btn">Register</a>
+        <a href="/login">Login</a>
+        <a href="/register" class="btn">Register</a>
         {% endif %}
       </nav>
     </div>
@@ -345,24 +429,25 @@
 
   <!-- ===== HERO SECTION ===== -->
   <!-- ===== HERO SECTION ===== -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>Futuristic City Traffic & Sustainability</h1>
-    <p>
-      This project is a data-driven project designed to study how future 
-      cities can manage mobility in smarter and more sustainable ways.
-      Use machine learning to understand how weather, economy, vehicle 
-      types, and more affect urban mobility and sustainability.</p> 
-    </p>
-    <div class="hero-actions">
-      <a href="/dashboard/density">Density Dashboard</a>
-      <a href="/dashboard/incident">Incident Dashboard</a>
-      <a href="/predict/density">Predict Density</a>
-      <a href="/predict/incident">Predict Incident</a>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Futuristic City Traffic & Sustainability</h1>
+      <p>
+        This project is a data-driven project designed to study how future
+        cities can manage mobility in smarter and more sustainable ways.
+        Use machine learning to understand how weather, economy, vehicle
+        types, and more affect urban mobility and sustainability.</p>
+      </p>
+      <div class="hero-actions">
+        <a href="/dashboard/density">Density Dashboard</a>
+        <a href="/dashboard/incident">Incident Dashboard</a>
+        <a href="/predict/density">Predict Density</a>
+        <a href="/predict/incident">Predict Incident</a>
+      </div>
     </div>
-  </div>
-  <img class="hero-img" src="https://images.pexels.com/photos/1600757/pexels-photo-1600757.jpeg" alt="Futuristic City Traffic">
-</section>
+    <img class="hero-img" src="https://images.pexels.com/photos/1600757/pexels-photo-1600757.jpeg"
+      alt="Futuristic City Traffic">
+  </section>
 
 
   <!-- ===== FEATURES SECTION ===== -->
@@ -422,13 +507,16 @@
   <section id="futurescope">
     <div class="section-title"> Future Scope </div>
     <p>
-      The Future scope of the project includes collecting data related to traffic density, vehicle types, and congestion timings. It involves analyzing traffic flow, calculating emissions, and identifying factors contributing to pollution and delays. The project also explores sustainable transport options such as electric vehicles, carpooling, and smart traffic systems.
+      The Future scope of the project includes collecting data related to traffic density, vehicle types, and congestion
+      timings. It involves analyzing traffic flow, calculating emissions, and identifying factors contributing to
+      pollution and delays. The project also explores sustainable transport options such as electric vehicles,
+      carpooling, and smart traffic systems.
     </p>
   </section>
 
   <!--footer section-->
-    <footer class="bg-gray-800 py-6">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-lg">&copy; 2025 Smarter Traffic • Greener Cities • Sustainable Future. All rights reserved.</p>
-        </div>
-    </footer>
+  <footer class="bg-gray-800 py-6">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-lg">&copy; 2025 Smarter Traffic • Greener Cities • Sustainable Future. All rights reserved.</p>
+    </div>
+  </footer>
