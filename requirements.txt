@@ -1,0 +1,13 @@
+
+flask
+flask_sqlalchemy
+pandas
+numpy
+scikit-learn
+xgboost
+matplotlib
+seaborn
+plotly
+joblib
+werkzeug
+gunicorn
