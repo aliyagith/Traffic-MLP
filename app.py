@@ -160,7 +160,7 @@ def predict():
 # About route
 @app.route("/about")
 def about():
-    return render_template('About.html')
+    return render_template('about.html')
 
 # Features route
 @app.route("/features")
